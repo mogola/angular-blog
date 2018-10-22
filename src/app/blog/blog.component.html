@@ -1,0 +1,18 @@
+<li [ngStyle] ="{'position':'relative', 
+				'margin-bottom':'20px'}" 
+	[ngClass]="{'list-group-item':true,
+				'list-group-item-success' : lovecountup > 0,
+				'list-group-item-danger' : lovecountup < 0 }">
+	<h3>{{ title }}</h3>
+	<p>{{ content }}</p>
+	<button [ngStyle] = "{'margin' :'0 15px 0 0'}" 
+			[ngClass]="{'btn-default btn btn-success' : true}" 
+			(click)="onAddLike()">{{ likeit}}</button>
+	<button [ngClass]="{'btn-default btn btn-warning' : true}" 
+			(click)="onAddDislike()">{{ dontlikeit}}</button>
+	<span [ngStyle] ="{'position':'absolute', 
+						'top':'10px', 
+						'right':'10px', 
+						'color':'#666'}" 
+			[ngClass]="{'date':true}">{{ currentDate | async | date:'short' | uppercase}}</span>
+</li>
