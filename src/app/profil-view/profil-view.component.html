@@ -1,0 +1,17 @@
+<div class="wrapper"> 
+  <h2 [ngStyle] ="{'padding':'20px 20px 0', 'margin':'0'}" class="title-post">Ma liste de post</h2>
+  <ul [ngStyle] ="{'padding':'20px', 'margin':'0'}" 
+       [ngClass]="{'form-group':true}">
+       <li *ngFor="let post of posts; let i = index">
+       		<h3> {{post.title}}</h3>
+       		<p>{{post.content}}</p>
+       		<a (click)="onViewPost(i)" class="link-detail">
+       			détail du post
+       		</a>
+       		<button (click)="onDeletePost(post)" class="btn-default btn-danger">Supprimer le post</button>
+       </li>
+  </ul>
+<button class="btn-success btn" (click)="likeAll()">J'aime tous</button>
+<button class="btn-danger btn" (click)="dislikeAll()">J'aime rien</button>
+<button class="btn-success btn" (click)="onSave()">Sauvegarder</button>
+<button class="btn-success btn" (click)="onFetch()">Charger</button>

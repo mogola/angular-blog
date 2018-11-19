@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PostService } from './../services/post.service';
 
 @Component({
   selector: 'app-blog',
@@ -14,8 +15,10 @@ export class BlogComponent implements OnInit {
 @Input() currentDate:Date;
 @Input() likeit:string = "Love it";
 @Input() dontlikeit:string = "Don't love it !" ;
+@Input() indexOfProfil:number;
+@Input() id:number;
 
-  constructor() { }
+  constructor(private postService:PostService) { }
 
   ngOnInit() {
   }
@@ -28,4 +31,11 @@ export class BlogComponent implements OnInit {
   	this.lovecountup -= 1;
   }
 
+  onThisActive(){
+    this.postService.onActive(this.indexOfProfil);
+  }
+
+  onThisDesactive(){
+    this.postService.onDesactive(this.indexOfProfil);
+  }
 }

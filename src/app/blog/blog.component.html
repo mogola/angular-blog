@@ -5,6 +5,7 @@
 				'list-group-item-danger' : lovecountup < 0 }">
 	<h3>{{ title }}</h3>
 	<p>{{ content }}</p>
+	<a [routerLink]="[id]" >détails</a>
 	<button [ngStyle] = "{'margin' :'0 15px 0 0'}" 
 			[ngClass]="{'btn-default btn btn-success' : true}" 
 			(click)="onAddLike()">{{ likeit}}</button>

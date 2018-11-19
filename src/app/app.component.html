@@ -1,11 +1,40 @@
-<div class="wrapper"> 
-  <h2 [ngStyle] ="{'padding':'20px 20px 0', 'margin':'0'}" class="title-post">Ma liste de post</h2>
-  <ul [ngStyle] ="{'padding':'20px', 'margin':'0'}" 
-       [ngClass]="{'form-group':true}">
-    <app-blog *ngFor= "let info of posts" 
-    [title] = "info.title"
-    [content] = "info.content"
-    [currentDate] = "info.created_at"
-    [lovecountup] = "info.loveIts"
-    [lovecountdown] = "info.dontLoveIts"></app-blog>
-  </ul>
+<div class="nav navbar-default">
+  <nav class="navbar-nav navbar-default">
+    <ul class="navbar-nav nav">
+      <li class=""routerLinkActive>
+        <a class="nav-link" routerLink="profil">Profil</a>
+      </li>
+      <li class="" routerLinkActive>
+        <a class="nav-link" routerLink="auth">Authentification</a>
+      </li>
+      <li class="" routerLinkActive>
+        <a class="nav-link" routerLink="edit">Edit profil</a>
+      </li>
+      <li class="" routerLinkActive>
+        <a class="nav-link" routerLink="users">Utilisateurs</a>
+      </li>
+      <li class="" routerLinkActive>
+        <a class="nav-link" routerLink="new">nouveu post</a>
+      </li>
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <a routerLink="auth/signup">Créer un compte</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <a routerLink="auth/signin">Connexion</a>
+      </li>
+      <li>
+        <a (click)="onSignOut()"
+           style="cursor:pointer"
+           *ngIf="isAuth">Déconnexion</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="container">
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+</div>
