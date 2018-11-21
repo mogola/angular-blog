@@ -1,9 +1,9 @@
 export class Blog{
 	id:number;
-	loveIts:number;
-	created_at;
+
 	constructor(
 		public title:string,
-		public content:string
+		public content:string,
+		public loveIts:number = 0,
+		public created_at: string = new Date().toString()
 	){}
-}

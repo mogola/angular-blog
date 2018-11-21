@@ -4,7 +4,6 @@ import { interval } from 'rxjs';
 import 'rxjs';
 import {Subscription} from 'rxjs';
 import * as firebase from 'firebase';
-import {AuthService} from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +12,8 @@ import {AuthService} from './services/auth.service';
 })
 
 export class AppComponent implements OnInit {
+constructor(){}
 
-counterSubscription:Subscription;
-constructor(private authService: AuthService){}
-  isAuth: boolean;
   ngOnInit(){
     // Initialize Firebase
     var config = {
@@ -29,20 +26,5 @@ constructor(private authService: AuthService){}
     };
 
     firebase.initializeApp(config);
-    
-    firebase.auth().onAuthStateChanged(
-      (user) => {
-        if(user) {
-          this.isAuth = true;
-        } else {
-          this.isAuth = false;
-        }
-      }
-    );
-    
-  }
-
-  onSignOut() {
-    this.authService.signOutUser();
   }
 }

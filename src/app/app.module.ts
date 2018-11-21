@@ -24,21 +24,18 @@ import { SingleBlogComponent } from './single-blog/single-blog.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignoutComponent } from './auth/signout/signout.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { HeaderComponent } from './header/header.component';
 
 
 
 const appRoutes = [
-  { path: 'auth/signup', component: SignupComponent },
-  { path: 'auth/signin', component: SigninComponent },
-  {path : 'profil',component:ProfilViewComponent},
-  {path : 'auth', component:AuthComponent},
-  {path: 'profil/:id',component:SingleBlogComponent},
-  {path : 'new', component:NewPostComponent},
-  {path : '', component:ProfilViewComponent},
+  {path: 'auth/signup', component: SignupComponent},
+  {path: 'auth/signin', component: SigninComponent},
+  {path : 'posts',canActivate:[AuthGuardService], component:ProfilViewComponent},
+  {path: 'posts/view/:id',canActivate:[AuthGuardService], component:SingleBlogComponent},
+  {path : 'new', canActivate:[AuthGuardService], component:NewPostComponent},
+  {path : '', component:SigninComponent},
   {path:'not-found', component:FourOhFourComponent},
-  {path:'edit', canActivate:[AuthGuardService], component:EditProfilComponent },
-  {path:'users', component:UserListComponent},
-  {path:'new-users', component:NewUserComponent},
   {path : '**', redirectTo:'/not-found'}
 ];
 
@@ -59,7 +56,8 @@ const appRoutes = [
     SingleBlogComponent,
     SigninComponent,
     SignoutComponent,
-    SignupComponent
+    SignupComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

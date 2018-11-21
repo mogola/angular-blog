@@ -10,45 +10,10 @@ export class PostService {
 constructor(){
 	this.getPosts();
 }
-
-currentDate = new Promise(
-  	(resolve, reject) =>{
-  		const date = new Date();
-  		setTimeout(() => {
-  			resolve(date);
-  		}, 2000);
-  	}
-  );
 	
 posts:Blog[] = []
 postSubject = new Subject<any[]>();
 
-
-/*
-  private posts = [
-  	{
-  		id:0,
-  		title : "Mon premier post",
-  		content : "Maecenas eu leo gravida, volutpat neque eu, fermentum dolor. Quisque ex arcu, tristique et lorem sed, dictum commodo tortor. Sed iaculis erat nec lorem auctor, vitae congue nibh commodo. Quisque porttitor interdum ipsum ac condimentum. Praesent aliquet nibh eu diam dictum lacinia. Nulla eu congue velit, non blandit metus. Donec cursus vestibulum ligula non varius.",
-  		loveIts : 0,
-  		created_at : this.currentDate
-  	},
-  	{
-  		id:1,
-  		title : "Mon deuxiéme post",
-  		content : "Maecenas eu leo gravida, volutpat neque eu, fermentum dolor. Quisque ex arcu, tristique et lorem sed, dictum commodo tortor. Sed iaculis erat nec lorem auctor, vitae congue nibh commodo. Quisque porttitor interdum ipsum ac condimentum. Praesent aliquet nibh eu diam dictum lacinia. Nulla eu congue velit, non blandit metus. Donec cursus vestibulum ligula non varius.",
-  		loveIts : 0,
-  		created_at : this.currentDate
-  	},
-  	{
-  		id:2,
-  		title : "Encore un post",
-  		content : "Maecenas eu leo gravida, volutpat neque eu, fermentum dolor. Quisque ex arcu, tristique et lorem sed, dictum commodo tortor. Sed iaculis erat nec lorem auctor, vitae congue nibh commodo. Quisque porttitor interdum ipsum ac condimentum. Praesent aliquet nibh eu diam dictum lacinia. Nulla eu congue velit, non blandit metus. Donec cursus vestibulum ligula non varius.",
-  		loveIts : 0,
-  		created_at : this.currentDate
-  	}
-  ];
- */
 //copie des données
   emitPostsSubject(){
   	this.postSubject.next(this.posts);
@@ -70,7 +35,7 @@ postSubject = new Subject<any[]>();
   getSinglePost(id:number){
   	return new Promise(
   		(resolve, reject) =>{
-  			firebase.database.ref('/posts/' + id).once('value').then(
+  			firebase.database().ref('/posts/' + id).once('value').then(
   				(data) => {
   					resolve(data.val());
   				}, 
@@ -134,7 +99,15 @@ postSubject = new Subject<any[]>();
   }
 
   onActive(index:number){
-  	this.posts[index].loveIts = 1;
+  	console.log(('loveIts' in this.posts[index]));
+  	if(!('loveIts' in this.posts[index]) ){
+  		console.log('dont exist');
+  		this.posts[index].loveIts = 0;
+  	}else{
+  		this.posts[index].loveIts += 1;
+  		console.log('exist');
+  	}
+  	this.savePosts();
   	this.emitPostsSubject();
   }
 

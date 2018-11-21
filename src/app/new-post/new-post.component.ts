@@ -12,7 +12,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class NewPostComponent implements OnInit {
 
   constructor(private formBuilder:FormBuilder, private postService:PostService, private router:Router) { }
-
+	
   postForm:FormGroup;
 
   ngOnInit() {
@@ -30,6 +30,6 @@ export class NewPostComponent implements OnInit {
 		const content = this.postForm.get('content').value;
 		const newPost = new Blog(title, content);
 		this.postService.createNewPost(newPost);
-		this.router.navigate(['']);
+		this.router.navigate(['posts']);
 	}
 }

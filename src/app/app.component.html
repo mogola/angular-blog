@@ -1,38 +1,4 @@
-<div class="nav navbar-default">
-  <nav class="navbar-nav navbar-default">
-    <ul class="navbar-nav nav">
-      <li class=""routerLinkActive>
-        <a class="nav-link" routerLink="profil">Profil</a>
-      </li>
-      <li class="" routerLinkActive>
-        <a class="nav-link" routerLink="auth">Authentification</a>
-      </li>
-      <li class="" routerLinkActive>
-        <a class="nav-link" routerLink="edit">Edit profil</a>
-      </li>
-      <li class="" routerLinkActive>
-        <a class="nav-link" routerLink="users">Utilisateurs</a>
-      </li>
-      <li class="" routerLinkActive>
-        <a class="nav-link" routerLink="new">nouveu post</a>
-      </li>
-    </ul>
-    
-    <ul class="nav navbar-nav navbar-right">
-      <li routerLinkActive="active" *ngIf="!isAuth">
-        <a routerLink="auth/signup">Créer un compte</a>
-      </li>
-      <li routerLinkActive="active" *ngIf="!isAuth">
-        <a routerLink="auth/signin">Connexion</a>
-      </li>
-      <li>
-        <a (click)="onSignOut()"
-           style="cursor:pointer"
-           *ngIf="isAuth">Déconnexion</a>
-      </li>
-    </ul>
-  </nav>
-</div>
+<app-header></app-header>
 <div class="container">
   <div class="row">
     <router-outlet></router-outlet>

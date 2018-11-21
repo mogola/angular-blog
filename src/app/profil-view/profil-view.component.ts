@@ -33,6 +33,9 @@ export class ProfilViewComponent implements OnInit, OnDestroy {
   onViewPost(id:number){
   	this.router.navigate(['posts', 'view', id])
   }
+  onAddLike(i:number){
+  	this.postService.onActive(i);
+  }
   likeAll(){
     this.postService.allLike();
   }
