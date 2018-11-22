@@ -29,7 +29,7 @@ date = new Date();
   }
 
   onBack(){
-    this.router.navigate(['']);
+    this.router.navigate(['posts']);
   }
 
 }
