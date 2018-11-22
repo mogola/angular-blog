@@ -91,14 +91,20 @@ postSubject = new Subject<any[]>();
   	this.emitPostsSubject();
   }
 
-  allDislike(){
-  	for(let post of this.posts){
-  		post.loveIts = -1;
+  onRemove(index:number){
+  	console.log(('loveIts' in this.posts[index]));
+  	if(!('loveIts' in this.posts[index]) ){
+  		console.log('dont exist');
+  		this.posts[index].loveIts = 0;
+  	}else{
+  		this.posts[index].loveIts -= 1;
+  		console.log('exist');
   	}
+  	this.savePosts();
   	this.emitPostsSubject();
   }
 
-  onActive(index:number){
+  onAdd(index:number){
   	console.log(('loveIts' in this.posts[index]));
   	if(!('loveIts' in this.posts[index]) ){
   		console.log('dont exist');
