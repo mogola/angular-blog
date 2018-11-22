@@ -5,14 +5,12 @@ import {Router} from '@angular/router';
 import {Blog} from '../models/Blog.model';
 
 @Component({
-  selector: 'app-profil-view',
-  templateUrl: './profil-view.component.html',
-  styleUrls: ['./profil-view.component.css']
+  selector: 'app-post-list',
+  templateUrl: './post-list.component.html',
+  styleUrls: ['./post-list.component.css']
 })
-
-export class ProfilViewComponent implements OnInit, OnDestroy {
-	// simulate current date
-  posts:any[];
+export class PostListComponent implements OnInit, OnDestroy {
+	 posts:any[];
   postSubscription:Subscription;
   constructor (private postService: PostService, private router:Router){}
 
@@ -47,5 +45,4 @@ export class ProfilViewComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
   	this.postSubscription.unsubscribe();
   }
-
 }

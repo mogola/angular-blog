@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable,of, from } from 'rxjs';
-import { interval } from 'rxjs';
-import 'rxjs';
-import {Subscription} from 'rxjs';
 import * as firebase from 'firebase';
 
 @Component({

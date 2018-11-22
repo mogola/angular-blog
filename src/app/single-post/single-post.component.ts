@@ -5,11 +5,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
-  selector: 'app-single-blog',
-  templateUrl: './single-blog.component.html',
-  styleUrls: ['./single-blog.component.css']
+  selector: 'app-single-post',
+  templateUrl: './single-post.component.html',
+  styleUrls: ['./single-post.component.css']
 })
-export class SingleBlogComponent implements OnInit {
+export class SinglePostComponent implements OnInit {
 
 post:Blog;
 date = new Date();

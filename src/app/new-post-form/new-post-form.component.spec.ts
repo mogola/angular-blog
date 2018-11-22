@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SingleProfilComponent } from './single-profil.component';
+import { NewPostFormComponent } from './new-post-form.component';
 
-describe('SingleProfilComponent', () => {
-  let component: SingleProfilComponent;
-  let fixture: ComponentFixture<SingleProfilComponent>;
+describe('NewPostFormComponent', () => {
+  let component: NewPostFormComponent;
+  let fixture: ComponentFixture<NewPostFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SingleProfilComponent ]
+      declarations: [ NewPostFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SingleProfilComponent);
+    fixture = TestBed.createComponent(NewPostFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

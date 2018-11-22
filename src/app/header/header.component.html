@@ -1,11 +1,11 @@
 <div class="nav navbar-default">
   <nav class="navbar-nav navbar-default">
     <ul class="navbar-nav nav">
-      <li class=""routerLinkActive>
+      <li routerLinkActive="active">
         <a class="nav-link" routerLink="posts">Ma liste de posts</a>
       </li>
-      <li class="" routerLinkActive>
-        <a class="nav-link" routerLink="new">Créeer nouveau post</a>
+      <li routerLinkActive="active">
+        <a class="nav-link" routerLink="new">Créer nouveau post</a>
       </li>
     </ul>
     
@@ -18,7 +18,7 @@
       </li>
       <li>
         <a (click)="onSignOut()"
-           style="cursor:pointer"
+           [ngStyle]="{'cursor':'pointer'}"
            *ngIf="isAuth">Déconnexion</a>
       </li>
     </ul>
