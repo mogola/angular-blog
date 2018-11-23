@@ -1,46 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-	// simulate current date
-  currentDate = new Promise(
-  	(resolve, reject) =>{
-  		const date = new Date();
-  		setTimeout(() => {
-  			resolve(date);
-  		}, 2000);
-  	}
-  );
 
-   // get posts - angular exercise  
-  posts = [
-  	{
-  		title : "Mon premier post",
-  		content : "Maecenas eu leo gravida, volutpat neque eu, fermentum dolor. Quisque ex arcu, tristique et lorem sed, dictum commodo tortor. Sed iaculis erat nec lorem auctor, vitae congue nibh commodo. Quisque porttitor interdum ipsum ac condimentum. Praesent aliquet nibh eu diam dictum lacinia. Nulla eu congue velit, non blandit metus. Donec cursus vestibulum ligula non varius.",
-  		loveIts : 0,
-  		dontLoveIts : 0,
-  		created_at : this.currentDate
-  	},
-  	{
-  		title : "Mon deuxiéme post",
-  		content : "Maecenas eu leo gravida, volutpat neque eu, fermentum dolor. Quisque ex arcu, tristique et lorem sed, dictum commodo tortor. Sed iaculis erat nec lorem auctor, vitae congue nibh commodo. Quisque porttitor interdum ipsum ac condimentum. Praesent aliquet nibh eu diam dictum lacinia. Nulla eu congue velit, non blandit metus. Donec cursus vestibulum ligula non varius.",
-  		loveIts : 0,
-  		dontLoveIts : 0,
-  		created_at : this.currentDate
-  	},
-  	{
-  		title : "Encore un post",
-  		content : "Maecenas eu leo gravida, volutpat neque eu, fermentum dolor. Quisque ex arcu, tristique et lorem sed, dictum commodo tortor. Sed iaculis erat nec lorem auctor, vitae congue nibh commodo. Quisque porttitor interdum ipsum ac condimentum. Praesent aliquet nibh eu diam dictum lacinia. Nulla eu congue velit, non blandit metus. Donec cursus vestibulum ligula non varius.",
-  		loveIts : 0,
-  		dontLoveIts : 0,
-  		created_at : this.currentDate
-  	}
-  ];
+export class AppComponent implements OnInit {
+constructor(){}
 
-constructor (){}
+  ngOnInit(){
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDA8vqu8KOn5dg4gcJgHOhmbUTsuhmM9vs",
+      authDomain: "blog-fc3d3.firebaseapp.com",
+      databaseURL: "https://blog-fc3d3.firebaseio.com",
+      projectId: "blog-fc3d3",
+      storageBucket: "",
+      messagingSenderId: "697630360488"
+    };
 
+    firebase.initializeApp(config);
+  }
 }

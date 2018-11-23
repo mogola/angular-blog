@@ -1,0 +1,22 @@
+<div class="wrapper"> 
+  <h2 [ngStyle] ="{'padding':'20px 20px 0', 'margin':'0'}" class="title-post">Ma liste de post</h2>
+  <ul [ngStyle] ="{'padding':'20px', 'margin':'0'}" 
+       [ngClass]="{'form-group':true}">
+       <li [ngClass]="{'list-group-item':true,
+				'list-group-item-success' : post.loveIts > 0,
+				'list-group-item-danger' : post.loveIts < 0 }" 
+       		*ngFor="let post of posts ; let i = index"
+       		[ngStyle]="{'margin':'5px 0', 'cursor':'pointer', 'position':'relative'}">
+	       		<h3> {{post.title}}</h3>
+	       		<p>{{post.content}}</p>
+	       		<p *ngIf="post.loveIts >= 0" [ngStyle]="{'font-weight':'bold'}">{{post.loveIts}}</p>
+	       		<span [ngStyle]="{'position':'absolute', 'top' : '20px', 'right' : '20px'}" [ngClass]="{'date':true}">{{ post.created_at | date:'short' | uppercase}}</span>
+       		<button [ngStyle]="{'margin':'0 5px'}" (click)="onViewPost(i)" class="btn link-detail">
+       			détail du post
+       		</button>
+       		<button [ngStyle]="{'position':'absolute', 'bottom' : '10px', 'right' : '10px'}" (click)="onDeletePost(post)" class="btn btn-danger">Supprimer post</button>
+       		<button [ngStyle]="{'margin':'0 5px'}" (click)="onAddLike(i)" class="btn btn-success">J'aime</button>
+       		<button [ngStyle]="{'margin':'0 5px'}" (click)="onRemoveLike(i)" class="btn btn-danger">Je n'aime pas</button>
+       </li>
+  </ul>
+ </div>

@@ -1,11 +1,6 @@
-<div class="wrapper"> 
-  <h2 [ngStyle] ="{'padding':'20px 20px 0', 'margin':'0'}" class="title-post">Ma liste de post</h2>
-  <ul [ngStyle] ="{'padding':'20px', 'margin':'0'}" 
-       [ngClass]="{'form-group':true}">
-    <app-blog *ngFor= "let info of posts" 
-    [title] = "info.title"
-    [content] = "info.content"
-    [currentDate] = "info.created_at"
-    [lovecountup] = "info.loveIts"
-    [lovecountdown] = "info.dontLoveIts"></app-blog>
-  </ul>
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+</div>
