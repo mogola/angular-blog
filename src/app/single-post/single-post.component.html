@@ -4,5 +4,26 @@
     <h3>{{ post.content}}</h3>
     <div>Nombre(s) de j'aime :  {{post.loveIts}}</div>
     <button [ngStyle]="{'margin':'15px 0 0 0'}" class="btn btn-default" (click)="onBack()">Retour</button>
+    <button [ngStyle]="{'margin':'15px 0 0 15px'}" type="submit" class="btn btn-default btn-success">modifier le contenu</button>
   </div>
+
+ <div class="container">
+	<div class="row">
+		<form [formGroup]="postFormEdit" (submit)="onSubmitFormEdit()" class="form">
+			<div class="form-group">
+				<label for="title">titre</label>
+				<input class="form-control" id="title" type="text" name="title" formControlName="title" value="{{ post.title }}" [(ngModel)]="post.title">
+			</div> 
+			<div class="form-group">
+				<label for="content">Contenu</label>
+				<textarea class="form-control" id="content" name="content" formControlName="content" [(ngModel)]="post.content">
+					{{ post.content}}
+				</textarea>
+			</div>
+			<div class="form-group">
+				<button [ngStyle]="{'margin':'15px 0 0 15px'}" type="submit" class="btn btn-default btn-success">Ajouter</button>
+			</div>
+		</form>
+	</div>
+</div>
 </div>

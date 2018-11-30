@@ -53,6 +53,16 @@ postSubject = new Subject<any[]>();
   	this.emitPostsSubject();
   }
 
+  updatePost(id:number,title:string,content:string){
+  		this.posts[id].title = title;
+  		this.posts[id].content = content;
+  		console.log('title', this.posts[id].title);
+  		console.log('content', this.posts[id].content);
+  		 console.log('id post', this.posts[id]);
+		this.savePosts();
+		this.emitPostsSubject();
+  }
+
   removePost(post:Blog){
   	const postIndexToRemove = this.posts.findIndex(
   		(postEl) => {
